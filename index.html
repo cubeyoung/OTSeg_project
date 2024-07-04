@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7LXHS2PFB5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-7LXHS2PFB5');
+  </script>
+  
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ZegOT: Zero-shot Segmentation Through Optimal Transport of Text Prompts">
+  <meta name="keywords" content="Zero-Shot, Optimal Transprot">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> ZegOT: Zero-shot segmentation Through Optimal Transport with Text Prompts</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./fig/zegot.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://sites.google.com/view/kwanyoung-kim/?pli=1">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com/cubeyoung/TA-VAAL">
+            TA-VAAL (CVPR 2021)
+          </a>          
+          <a class="navbar-item" href="https://arxiv.org/pdf/2106.07009.pdf">
+            Noise2Score (NeurIPS 2021)
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2112.03696">
+            NoiseAdap2Score (CVPR 2022)
+          </a>          
+          <a class="navbar-item" href="https://arxiv.org/abs/2104.05892">
+            AdaINSeg (ECCV 2022)
+          </a>          
+          <a class="navbar-item" href="https://arxiv.org/pdf/2209.14566.pdf">
+            DARL (ICLR 2023)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">ZegOT: Zero-shot Segmentation Through Optimal Transport of Text Prompts</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/kwanyoung-kim-2a39b41b3/">Kwanyoung Kim</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/yujin-oh-971137104/">Yujin Oh</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://bispl.weebly.com/">Jong Chul Ye</a><sup>1</sup>,
+            </span>
+            <!-- <span class="author-block">
+              Anonymous Authors</span> -->
+          </div>
+          <!-- <div class="is-size-5 publication-authors">            
+            <span class="author-block"><sup>1</sup>Graduate School of AI, KAIST,</span>
+          </div>
+          <div class="is-size-5 publication-authors">            
+            <span class="author-block"><sup>*</sup>equal contribution</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2301.12171.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2301.12171.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/cubeyoung/ZegOT"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+            <div class="is-size-6 publication-authors">            
+              <span class="author-block">Under review,</span> 
+              <span class="author-block">Code will be released soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- main Figure. -->
+    <div class="column">
+        <h2 class="title is-3"></h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <!-- <img src="./fig/main.jpg"
+                 class="thor"
+                 alt="main_image."/> -->
+            <video id="teaser" autoplay muted loop playsinline height="100%">
+            <source src="./fig/Video_main_v1.mp4"
+                    type="video/mp4">
+            </video>                 
+          </div>
+        </div>
+    </div>
+    <!--/ main Figure. -->    
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent success of large-scale Contrastive Language-Image Pre-training (CLIP) has led to great promise in zero-shot semantic segmentation by transferring image-text aligned knowledge to  pixel-level classification. 
+            However, existing methods usually require an additional image encoder or retraining/tuning the CLIP module. Here,  we propose a novel we propose a novel <span style="color:#33CAFF;font-weight:bold;"> Zero-shot segmentation with Optimal Transport
+            (ZegOT) </span>method that matches multiple text prompts with frozen image embeddings through optimal transport. In particular, we introduce a novel  Multiple Prompt Optimal Transport Solver (MPOT), which is designed to learn an optimal mapping between multiple text prompts and visual feature maps of the frozen image encoder hidden layers. This unique mapping method facilitates each of the multiple text prompts to effectively focus on distinct visual semantic attributes.
+            Through extensive experiments on benchmark datasets, we show that our method achieves the state-of-the-art (SOTA) performance over existing Zero-shot Semantic Segmentation (ZS3) approaches.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <!-- Effectiveness of ZegOT. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Effectiveness of ZegOT</h2>
+          <p>
+            Visualization of text prompts-related image pixel alignment. Without proposed MPOT, all the multiple prompts on each class P are cohered and their related score maps resemble each others. On the other hand, <span style="color:#33CAFF;font-weight:bold;">with our MPOT</span>, each P is diversely projected and each P-related score map <span style="color:#33CAFF;font-weight:bold;">focuses on different semantic attributes.</span>
+          </p>
+          <img src="./fig/score.png" vspace = 10 
+          class="figure1"
+          alt="figure1_image."/>
+        </div>
+      </div>
+      <!--/ Effectiveness of ZegOT. -->
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Multi Prompt OT Solver (MPOT) -->
+      <div class="column">
+        <h2 class="title is-3">Multi Prompt OT Solver (MPOT)</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+               A schematic diagram of <span style="color:#33CAFF;font-weight:bold;">Multi Prompt Optimal Transport (MPOT) solvers. </span> The pixel-text score matrix given each image encoder layer is refined through the optimal transport plan.
+            </p>            
+            <video id="teaser" autoplay muted loop playsinline height="100%">
+              <source src="./fig/mpot_video.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <!-- Multi Prompt OT Solver (MPOT) -->
+      <!-- Effectiveness of ZegOT. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Analysis of MPOT</h2>
+          <p>
+            In the baseline method without MPOT, the learned text prompts P show tightly grouped distribution within their respective class clusters (indicated as different colors in the left image, respectively). 
+            In contrast, <span style="color:#33CAFF;font-weight:bold;">our ZegOT with MPOT</span> produces dispersed distributions, 
+            with even cohesion within corresponding prompt clusters (indicated as gray circles in the right image in Figure, respectively). 
+          </p>
+          <img src="./fig/mpot_analysis.jpg" vspace = 10 
+          class="figure1"
+          alt="figure1_image."/>
+        </div>
+      </div>
+      <!--/ Effectiveness of ZegOT. -->      
+    </div>
+  </div>
+</section>
+<section class="section">
+    <div class="container is-max-desktop">
+        <h2 class="title is-3">Qualitative Result of ZegOT</h2>
+        <!-- Visual Effects. -->
+        <div class="column">
+          <h2 class="title is-3">PASCAL Context</h2>
+          <div class="columns is-centered">
+            <div class="column content">
+                <p>
+                  Qualitative zero-shot segmentation results on PASCAL Context dataset. The <span style="background-color:yellow;font-weight:bold;">yellow</span> tag indicates seen classes, while the
+                  <span style="background-color:#33FF39;font-weight:bold;">green </span> tag indicates unseen classes. Our ZegOT segmentes semantic objectex most accurately of unseen objects compare to previous SOTA methods. 
+                </p>            
+                <img src="./fig/context.jpg"
+                class="score_map"
+                alt="score_map_image."/>
+            </div>
+          </div>
+        </div>        
+        <!--/ Visual Effects. -->
+        <div class="column">
+            <h2 class="title is-3">COCO-Stuff164K</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                  <p>
+                    Qualitative zero-shot segmentation results on COCO-Stuff164K dataset. The <span style="background-color:yellow;font-weight:bold;">yellow</span> tag indicates seen classes, while the
+                    <span style="background-color:#33FF39;font-weight:bold;">green </span> tag indicates unseen classes. Surprisingly, our ZegOT demonstrates superior performance in accurately categorizing classes 
+                    and precisely sectioning boundaries of unseen objects, unlike previous SOTA methods which tend to misclassify the category (see <span style="color:red;font-weight:bold;"> red arrows </span>.)
+                  </p>            
+                  <img src="./fig/coco.jpg"
+                  class="segment_results"
+                  alt="segment_reults_image."/>
+              </div>
+            </div>
+        </div> 
+    </div>       
+</section>
+<section class="section">
+  <div class="container is-max-desktop">
+      <h2 class="title is-3"></h2>
+      <!-- Visual Effects. -->
+      <div class="column">
+        <h2 class="title is-3">Our ZegOT Results on Real-World Data</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+              <p>
+              Qualitative zero-shot segmentation results on real-world data. The <span style="background-color:yellow;font-weight:bold;">yellow </span>tag indicates seen classes, whille the  <span style="background-color:#33FF39;font-weight:bold;">green</span> tag indicates unseen classes.
+              We demonstarte that our ZegOT can be suceessfully applied to real-world dataset, which are not available during training.  
+              </p>            
+              <img src="./fig/real_thor.png"
+              class="score_map"
+              alt="score_map_image."/>
+          </div>
+        </div>
+      </div>        
+  </div>       
+</section>
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{kim2023zegot,
+  author    = {Kwanyoung Kim, Yujin Oh, Jong Chul Ye},
+  title     = {ZegOT: Zero-shot Segmentation Through Optimal Transport of Text Prompt},
+  eprint    = {arixv:2301.1217},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section> -->
+<div style="text-align: center;">
+  <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcubeyoung.github.io%2Fzegot.github.io%2F&count_bg=%233DC8C4&title_bg=%2320AA9F&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/cubeyoung" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
