@@ -174,8 +174,8 @@
             The recent success of CLIP has demonstrated promising results in zero-shot semantic segmentation by transferring muiltimodal knowledge to pixel-level classification. 
             However, leveraging pre-trained CLIP knowledge to closely align text embeddings with pixel embeddings still has limitations in existing approaches. 
             To address this issue, we propose <span style="color:#33CAFF;font-weight:bold;">OTSeg</span>, a novel multimodal attention mechanism aimed at enhancing the potential of multiple text prompts for matching associated pixel embeddings. 
-            We first propose <span style="color:#33CAFF;font-weight:bold;">Multi-Prompts Sinkhorn (MPS) based on the Optimal Transport (OT) algorithm</span>, which leads multiple text prompts to selectively focus on various semantic features within image pixels. 
-            Moreover, inspired by the success of Sinkformers in unimodal settings, we introduce the extension of MPS, called  Multi-Prompts Sinkhorn Attention (MPSA), which effectively replaces cross-attention mechanisms within Transformer framework in multimodal settings. Through extensive experiments, we demonstrate that OTSeg achieves state-of-the-art (SOTA) performance with significant gains on Zero-Shot Semantic Segmentation (ZS3) tasks across three benchmark datasets.    
+            We first propose <span style="color:#33CAFF;font-weight:bold;"> Multi-Prompts Sinkhorn (MPS) based on the Optimal Transport (OT) algorithm</span>, which leads multiple text prompts to selectively focus on various semantic features within image pixels. 
+            Moreover, inspired by the success of Sinkformers in unimodal settings, we introduce the extension of MPS, called <span style="color:#33CAFF;font-weight:bold;"> Multi-Prompts Sinkhorn Attention (MPSA) </span> , which effectively replaces cross-attention mechanisms within Transformer framework in multimodal settings. Through extensive experiments, we demonstrate that OTSeg achieves state-of-the-art (SOTA) performance with significant gains on Zero-Shot Semantic Segmentation (ZS3) tasks across three benchmark datasets.    
             
           </p>
         </div>
@@ -192,10 +192,12 @@
       <!-- Effectiveness of ZegOT. -->
       <div class="column">
         <div class="content">
-          <h2 class="title is-3">Main Method</h2>
+          <h2 class="title is-3">Overview of OTSeg for zero-shot semantic segmentation</h2>
           <p>
-            Visualization of text prompts-related image pixel alignment. Without proposed MPOT, all the multiple prompts on each class P are cohered and their related score maps resemble each others. On the other hand, <span style="color:#33CAFF;font-weight:bold;">with our MPOT</span>, each P is diversely projected and each P-related score map <span style="color:#33CAFF;font-weight:bold;">focuses on different semantic attributes.</span>
-          </p>
+            (a) MPS path refines the score map using the <span style="color:#33CAFF;font-weight:bold;"> MPS</span> algorithm.
+            (b) Decoder path involves the decoder output, which integrates the the <span style="color:#33CAFF;font-weight:bold;">Multi-Prompts Sinkhorn Attention (MPSA) </span>predictions.
+            (c) During inference, OTSeg ensembles predictions from both paths with a balancing factor lambda.
+           </p>
           <img src="./fig/main.jpg" vspace = 10 
           class="figure1"
           alt="figure1_image."/>
@@ -214,9 +216,10 @@
       <!-- Effectiveness of ZegOT. -->
       <div class="column">
         <div class="content">
-          <h2 class="title is-3">Effectiveness of ZegOT</h2>
+          <h2 class="title is-3">Effectiveness of OTSeg</h2>
           <p>
-            Visualization of text prompts-related image pixel alignment. Without proposed MPOT, all the multiple prompts on each class P are cohered and their related score maps resemble each others. On the other hand, <span style="color:#33CAFF;font-weight:bold;">with our MPOT</span>, each P is diversely projected and each P-related score map <span style="color:#33CAFF;font-weight:bold;">focuses on different semantic attributes.</span>
+            While all the text prompt-related score maps are cohered without MPSA (white arrows), with MPSA within our proposed OTSeg+, each Score map is diversely activated
+            (red arrows) to help the model segment each object sharply. The  <span style="background-color:yellow;font-weight:bold;">yellow</span> tag indicates seen classes, while the <span style="background-color:#33FF39;font-weight:bold;">green </span> tag indicates unseen classes.            
           </p>
           <img src="./fig/score_sup.jpg" vspace = 10 
           class="figure1"
@@ -236,51 +239,47 @@
 
       <!-- Multi Prompt OT Solver (MPOT) -->
       <div class="column">
-        <h2 class="title is-3">Multi Prompt OT Solver (MPOT)</h2>
+        <h2 class="title is-3">Proposed a Novel attention mechanism</h2>
         <div class="columns is-centered">
           <div class="column content">
             <p>
-               A schematic diagram of <span style="color:#33CAFF;font-weight:bold;">Multi Prompt Optimal Transport (MPOT) solvers. </span> The pixel-text score matrix given each image encoder layer is refined through the optimal transport plan.
+              (a) Cross-attention mechanism for multimodal settings. (b) Sinkformer self-attention mechanism for unimodal settings. (c) Our proposed Muti-Prompt Sinkhorn Attention (MPSA) for multimodal settings, which aims to optimally transport image pixel (M) to multiple text prompts (N).
+              Our proposed MPSA <span style="color:#33CAFF;font-weight:bold;">integrated as plugin module in each transformer layer, and achieve optimal matching between multiple text embedding and pixel embedding </span>.
             </p>            
-            <video id="teaser" autoplay muted loop playsinline height="100%">
-              <source src="./fig/score_sup.jpg"
-                      type="video/mp4">
-            </video>
+            <img src="./fig/OT-attention.png" vspace = 10 
+            class="figure1"
+            alt="figure1_image."/>
           </div>
         </div>
       </div>
-      <!-- Multi Prompt OT Solver (MPOT) -->
-      <!-- Effectiveness of ZegOT. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Analysis of MPOT</h2>
-          <p>
-            In the baseline method without MPOT, the learned text prompts P show tightly grouped distribution within their respective class clusters (indicated as different colors in the left image, respectively). 
-            In contrast, <span style="color:#33CAFF;font-weight:bold;">our ZegOT with MPOT</span> produces dispersed distributions, 
-            with even cohesion within corresponding prompt clusters (indicated as gray circles in the right image in Figure, respectively). 
-          </p>
-          <img src="./fig/OT-attention.png" vspace = 10 
-          class="figure1"
-          alt="figure1_image."/>
-        </div>
-      </div>
-      <!--/ Effectiveness of ZegOT. -->      
-    </div>
   </div>
 </section>
 <section class="section">
+  <div class="container is-max-desktop">
+      <h2 class="title is-3">Quantitative Result of OTSeg</h2>
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column content">      
+              <img src="./fig/table.png"
+              class="score_map"
+              alt="score_map_image."/>
+          </div>
+        </div>
+      </div>          
+</section>
+<section class="section">
     <div class="container is-max-desktop">
-        <h2 class="title is-3">Qualitative Result of ZegOT</h2>
+        <h2 class="title is-3">Qualitative Result of OTSeg</h2>
         <!-- Visual Effects. -->
         <div class="column">
-          <h2 class="title is-3">PASCAL Context</h2>
           <div class="columns is-centered">
             <div class="column content">
                 <p>
-                  Qualitative zero-shot segmentation results on PASCAL Context dataset. The <span style="background-color:yellow;font-weight:bold;">yellow</span> tag indicates seen classes, while the
-                  <span style="background-color:#33FF39;font-weight:bold;">green </span> tag indicates unseen classes. Our ZegOT segmentes semantic objectex most accurately of unseen objects compare to previous SOTA methods. 
+                  The <span style="background-color:yellow;font-weight:bold;">yellow</span> tag indicates seen classes, while the
+                  <span style="background-color:#33FF39;font-weight:bold;">green </span> tag indicates unseen classes. Our OTSeg segmentes semantic objectex most accurately of both seen and unseen objects compare to previous SOTA methods. 
                 </p>            
-                <img src="./fig/context.jpg"
+                <img src="./fig/main_result.jpg"
                 class="score_map"
                 alt="score_map_image."/>
             </div>
@@ -288,15 +287,9 @@
         </div>        
         <!--/ Visual Effects. -->
         <div class="column">
-            <h2 class="title is-3">COCO-Stuff164K</h2>
             <div class="columns is-centered">
-              <div class="column content">
-                  <p>
-                    Qualitative zero-shot segmentation results on COCO-Stuff164K dataset. The <span style="background-color:yellow;font-weight:bold;">yellow</span> tag indicates seen classes, while the
-                    <span style="background-color:#33FF39;font-weight:bold;">green </span> tag indicates unseen classes. Surprisingly, our ZegOT demonstrates superior performance in accurately categorizing classes 
-                    and precisely sectioning boundaries of unseen objects, unlike previous SOTA methods which tend to misclassify the category (see <span style="color:red;font-weight:bold;"> red arrows </span>.)
-                  </p>            
-                  <img src="./fig/coco.jpg"
+              <div class="column content">     
+                  <img src="./fig/supple.png"
                   class="segment_results"
                   alt="segment_reults_image."/>
               </div>
@@ -304,6 +297,7 @@
         </div> 
     </div>       
 </section>
+
 
 <div style="text-align: center;">
   <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcubeyoung.github.io%2Fzegot.github.io%2F&count_bg=%233DC8C4&title_bg=%2320AA9F&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
