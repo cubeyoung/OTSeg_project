@@ -185,6 +185,27 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <!-- Effectiveness of ZegOT. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Main Method</h2>
+          <p>
+            Visualization of text prompts-related image pixel alignment. Without proposed MPOT, all the multiple prompts on each class P are cohered and their related score maps resemble each others. On the other hand, <span style="color:#33CAFF;font-weight:bold;">with our MPOT</span>, each P is diversely projected and each P-related score map <span style="color:#33CAFF;font-weight:bold;">focuses on different semantic attributes.</span>
+          </p>
+          <img src="./fig/main.jpg" vspace = 10 
+          class="figure1"
+          alt="figure1_image."/>
+        </div>
+      </div>
+      <!--/ Effectiveness of ZegOT. -->
+    </div>
+  </div>
+</section>
+
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -197,7 +218,7 @@
           <p>
             Visualization of text prompts-related image pixel alignment. Without proposed MPOT, all the multiple prompts on each class P are cohered and their related score maps resemble each others. On the other hand, <span style="color:#33CAFF;font-weight:bold;">with our MPOT</span>, each P is diversely projected and each P-related score map <span style="color:#33CAFF;font-weight:bold;">focuses on different semantic attributes.</span>
           </p>
-          <img src="./fig/score.png" vspace = 10 
+          <img src="./fig/score_sup.jpg" vspace = 10 
           class="figure1"
           alt="figure1_image."/>
         </div>
@@ -222,7 +243,7 @@
                A schematic diagram of <span style="color:#33CAFF;font-weight:bold;">Multi Prompt Optimal Transport (MPOT) solvers. </span> The pixel-text score matrix given each image encoder layer is refined through the optimal transport plan.
             </p>            
             <video id="teaser" autoplay muted loop playsinline height="100%">
-              <source src="./fig/mpot_video.mp4"
+              <source src="./fig/score_sup.jpg"
                       type="video/mp4">
             </video>
           </div>
@@ -238,7 +259,7 @@
             In contrast, <span style="color:#33CAFF;font-weight:bold;">our ZegOT with MPOT</span> produces dispersed distributions, 
             with even cohesion within corresponding prompt clusters (indicated as gray circles in the right image in Figure, respectively). 
           </p>
-          <img src="./fig/mpot_analysis.jpg" vspace = 10 
+          <img src="./fig/OT-attention.png" vspace = 10 
           class="figure1"
           alt="figure1_image."/>
         </div>
@@ -283,38 +304,7 @@
         </div> 
     </div>       
 </section>
-<section class="section">
-  <div class="container is-max-desktop">
-      <h2 class="title is-3"></h2>
-      <!-- Visual Effects. -->
-      <div class="column">
-        <h2 class="title is-3">Our ZegOT Results on Real-World Data</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-              <p>
-              Qualitative zero-shot segmentation results on real-world data. The <span style="background-color:yellow;font-weight:bold;">yellow </span>tag indicates seen classes, whille the  <span style="background-color:#33FF39;font-weight:bold;">green</span> tag indicates unseen classes.
-              We demonstarte that our ZegOT can be suceessfully applied to real-world dataset, which are not available during training.  
-              </p>            
-              <img src="./fig/real_thor.png"
-              class="score_map"
-              alt="score_map_image."/>
-          </div>
-        </div>
-      </div>        
-  </div>       
-</section>
 
-<!-- <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@misc{kim2023zegot,
-  author    = {Kwanyoung Kim, Yujin Oh, Jong Chul Ye},
-  title     = {ZegOT: Zero-shot Segmentation Through Optimal Transport of Text Prompt},
-  eprint    = {arixv:2301.1217},
-  year      = {2023},
-}</code></pre>
-  </div>
-</section> -->
 <div style="text-align: center;">
   <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcubeyoung.github.io%2Fzegot.github.io%2F&count_bg=%233DC8C4&title_bg=%2320AA9F&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
 </div>
