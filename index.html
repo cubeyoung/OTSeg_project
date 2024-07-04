@@ -16,7 +16,7 @@
         content="OTSeg: Multi-prompt Sinkhorn Attention for Zero-Shot Semantic Segmentation">
   <meta name="keywords" content="Zero-Shot, Optimal Transprot">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ZegOT: Zero-shot segmentation Through Optimal Transport with Text Prompts</title>
+  <title> OTSeg: Multi-prompt Sinkhorn Attention for Zero-Shot Semantic Segmentation</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
 
@@ -172,10 +172,12 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Recent success of large-scale Contrastive Language-Image Pre-training (CLIP) has led to great promise in zero-shot semantic segmentation by transferring image-text aligned knowledge to  pixel-level classification. 
-            However, existing methods usually require an additional image encoder or retraining/tuning the CLIP module. Here,  we propose a novel we propose a novel <span style="color:#33CAFF;font-weight:bold;"> Zero-shot segmentation with Optimal Transport
-            (ZegOT) </span>method that matches multiple text prompts with frozen image embeddings through optimal transport. In particular, we introduce a novel  Multiple Prompt Optimal Transport Solver (MPOT), which is designed to learn an optimal mapping between multiple text prompts and visual feature maps of the frozen image encoder hidden layers. This unique mapping method facilitates each of the multiple text prompts to effectively focus on distinct visual semantic attributes.
-            Through extensive experiments on benchmark datasets, we show that our method achieves the state-of-the-art (SOTA) performance over existing Zero-shot Semantic Segmentation (ZS3) approaches.
+            The recent success of CLIP has demonstrated promising results in zero-shot semantic segmentation by transferring muiltimodal knowledge to pixel-level classification. 
+            However, leveraging pre-trained CLIP knowledge to closely align text embeddings with pixel embeddings still has limitations in existing approaches. 
+            To address this issue, we propose <span style="color:#33CAFF;font-weight:bold;">OTSeg</span>, a novel multimodal attention mechanism aimed at enhancing the potential of multiple text prompts for matching associated pixel embeddings. 
+            We first propose <span style="color:#33CAFF;font-weight:bold;">Multi-Prompts Sinkhorn (MPS) based on the Optimal Transport (OT) algorithm</span>, which leads multiple text prompts to selectively focus on various semantic features within image pixels. 
+            Moreover, inspired by the success of Sinkformers in unimodal settings, we introduce the extension of MPS, called  Multi-Prompts Sinkhorn Attention (MPSA), which effectively replaces cross-attention mechanisms within Transformer framework in multimodal settings. Through extensive experiments, we demonstrate that OTSeg achieves state-of-the-art (SOTA) performance with significant gains on Zero-Shot Semantic Segmentation (ZS3) tasks across three benchmark datasets.    
+            
           </p>
         </div>
       </div>
